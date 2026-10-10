@@ -35,10 +35,16 @@ jobs:
 
       - name: Build APK
         run: |
-          chmod +x ./gradlew
-          ./gradlew assembleDebug
+          if [ -f ./gradlew ]; then
+            chmod +x ./gradlew
+            ./gradlew assembleDebug
+          else
+            echo "ERROR: gradlew file not found"
+            exit 1
+          fi
 
       - name: Upload APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: MyButtonApp
