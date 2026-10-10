@@ -25,9 +25,7 @@ jobs:
         with:
           cmdline-tools-version: '12266719'
           accept-android-sdk-licenses: true
-
-      - name: Accept Android SDK licenses
-        run: yes | sdkmanager --licenses
+          log-accepted-android-sdk-licenses: false
 
       - name: Install Android SDK packages
         run: |
