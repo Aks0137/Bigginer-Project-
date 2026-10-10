@@ -39,15 +39,8 @@ jobs:
             "platforms;android-35" \
             "build-tools;35.0.0"
 
-      - name: Build APK
-        run: |
-          if [ -f ./gradlew ]; then
-            chmod +x ./gradlew
-            ./gradlew assembleDebug
-          else
-            echo "gradlew file not found"
-            exit 1
-          fi
+             - name: Build APK
+        run: gradle assembleDebug
 
       - name: Upload APK
         if: success()
